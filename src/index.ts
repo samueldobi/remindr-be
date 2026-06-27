@@ -1,13 +1,7 @@
-import express from "express";
 import dotenv from "dotenv";
+import app from "./app";
 
-const app = express();
-
-app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.send("Remindr API is running");
-});
+dotenv.config();
 
 const PORT = process.env.PORT || 4000;
 
