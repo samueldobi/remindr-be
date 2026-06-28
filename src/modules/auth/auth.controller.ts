@@ -1,19 +1,20 @@
 import type { Request, Response } from "express";
 import { z } from "zod";
 import * as authService from "./auth.service";
+import type { UserRow } from "../../types";
 
 const registerSchema = z.object({
   name: z.string().min(1),
-  email: z.string().email(),
+  email: z.email(),
   password: z.string().min(6),
 });
 
 const loginSchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
   password: z.string().min(1),
 });
 
-function stripUser(user: { password_hash: string; [key: string]: unknown }) {
+function stripUser(user: UserRow): Omit<UserRow, "password_hash"> {
   const { password_hash: _, ...safe } = user;
   return safe;
 }
