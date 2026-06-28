@@ -63,6 +63,6 @@ export async function refresh(refreshToken: string) {
   return { accessToken, refreshToken: newRefreshToken };
 }
 
-export async function logout(refreshToken: string) {
-  await authRepository.deleteRefreshToken(hashToken(refreshToken));
+export async function logout(userId: string) {
+  await authRepository.deleteUserRefreshTokens(userId);
 }

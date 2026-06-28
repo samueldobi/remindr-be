@@ -64,12 +64,6 @@ export async function refresh(req: Request, res: Response) {
 }
 
 export async function logout(req: Request, res: Response) {
-  const parsed = schemas.refreshSchema.safeParse(req.body);
-  if (!parsed.success) {
-    res.status(400).json({ error: parsed.error.issues });
-    return;
-  }
-
-  await authService.logout(parsed.data.refreshToken);
+  await authService.logout(req.user!.userId);
   res.status(204).end();
 }
