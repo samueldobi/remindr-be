@@ -5,8 +5,15 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": " nodemon --exec tsx  src/index.ts"
-   
+    "dev": " nodemon --exec tsx  src/index.ts",
+
+    "migrate:create": "node-pg-migrate create --migrations-dir src/migrations",
+    "migrate:up": "node-pg-migrate up --migrations-dir src/migrations",
+    "migrate:down": "node-pg-migrate down --migrations-dir src/migrations"
+  },
+  "node-pg-migrate": {
+    "migration-file-language": "ts",
+    "dir": "src/migrations"
   },
   "keywords": [],
   "author": "",
@@ -18,14 +25,16 @@
       "onFail": "download"
     }
   },
-
   "dependencies": {
     "dotenv": "^17.4.2",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "pg": "^8.22.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.0.1",
+    "@types/pg": "^8.20.0",
+    "node-pg-migrate": "^8.0.4",
     "nodemon": "^3.1.14",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"
