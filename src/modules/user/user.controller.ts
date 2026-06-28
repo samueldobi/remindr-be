@@ -1,16 +1,9 @@
 import type { Request, Response } from "express";
 import * as userService from "./user.service";
 
-export async function register(req: Request, res: Response) {
-  const { name, email, password } = req.body;
-
-  try {
-    const user = await userService.register(name, email, password);
-    res.status(201).json({ user });
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Internal server error";
-    res.status(400).json({ error: message });
-  }
+function stripUser(user: { password_hash: string; [key: string]: unknown }) {
+  const { password_hash: _, ...safe } = user;
+  return safe;
 }
 
 export async function getProfile(req: Request, res: Response) {
@@ -21,5 +14,5 @@ export async function getProfile(req: Request, res: Response) {
     return;
   }
 
-  res.json({ user });
+  res.json({ user: stripUser(user) });
 }

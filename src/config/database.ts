@@ -11,4 +11,5 @@ pool.on("error", (err) => {
   process.exit(-1);
 });
 export default pool;
-export const query = (text: string, params?: unknown[]) => pool.query(text, params);
+export const query = <T extends pg.QueryResultRow>(text: string, params?: unknown[]) =>
+  pool.query<T>(text, params);

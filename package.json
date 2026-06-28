@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": " nodemon --exec tsx  src/index.ts",
-
     "migrate:create": "node-pg-migrate create --migrations-dir src/migrations",
     "migrate:up": "node-pg-migrate up --migrations-dir src/migrations",
     "migrate:down": "node-pg-migrate down --migrations-dir src/migrations"
@@ -26,11 +25,14 @@
     }
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "pg": "^8.22.0"
+    "pg": "^8.22.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/express": "^5.0.6",
     "@types/node": "^26.0.1",
     "@types/pg": "^8.20.0",
