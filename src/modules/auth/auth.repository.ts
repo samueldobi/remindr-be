@@ -1,5 +1,5 @@
 import { query } from "../../config/database";
-import type { UserRow } from "../../types";
+import type { UserRow, RefreshTokenRow } from "../../types";
 
 export async function findByEmail(email: string) {
   return query<UserRow>("SELECT * FROM users WHERE email = $1", [email]);
@@ -20,8 +20,8 @@ export async function createRefreshToken(userId: string, tokenHash: string, expi
 }
 
 export async function findRefreshToken(tokenHash: string) {
-  return query(
-    `SELECT * FROM refresh_tokens WHERE token_hash = $1 AND expires_at > NOW()`,
+  return query<RefreshTokenRow>(
+    "SELECT * FROM refresh_tokens WHERE token_hash = $1 AND expires_at > NOW()",
     [tokenHash],
   );
 }
