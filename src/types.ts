@@ -8,6 +8,16 @@ export interface UserRow {
   updated_at: Date;
 }
 
+export interface SavingsGoalRow {
+  id: string;
+  user_id: string;
+  title: string;
+  target_amount: string;
+  current_amount: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
 export interface BillRow {
   id: string;
   user_id: string;

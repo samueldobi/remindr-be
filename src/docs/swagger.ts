@@ -48,6 +48,18 @@ const options: swaggerJsdoc.Options = {
             updated_at: { type: "string", format: "date-time" },
           },
         },
+        SavingsGoal: {
+          type: "object",
+          properties: {
+            id: { type: "string" },
+            user_id: { type: "string" },
+            title: { type: "string" },
+            target_amount: { type: "string" },
+            current_amount: { type: "string" },
+            created_at: { type: "string", format: "date-time" },
+            updated_at: { type: "string", format: "date-time" },
+          },
+        },
         Bill: {
           type: "object",
           properties: {
