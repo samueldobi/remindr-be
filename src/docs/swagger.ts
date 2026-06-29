@@ -36,6 +36,18 @@ const options: swaggerJsdoc.Options = {
             updated_at: { type: "string", format: "date-time" },
           },
         },
+        Task: {
+          type: "object",
+          properties: {
+            id: { type: "string" },
+            user_id: { type: "string" },
+            title: { type: "string" },
+            category: { type: "string" },
+            completed: { type: "boolean" },
+            created_at: { type: "string", format: "date-time" },
+            updated_at: { type: "string", format: "date-time" },
+          },
+        },
       },
     },
   },

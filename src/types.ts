@@ -8,6 +8,16 @@ export interface UserRow {
   updated_at: Date;
 }
 
+export interface TaskRow {
+  id: string;
+  user_id: string;
+  title: string;
+  category: string;
+  completed: boolean;
+  created_at: Date;
+  updated_at: Date;
+}
+
 export interface RefreshTokenRow {
   id: string;
   user_id: string;
